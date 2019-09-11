@@ -6,6 +6,8 @@ if ('function' === typeof importScripts) {
     // @ts-ignore
     if (workbox) {
         console.log('Workbox is loaded');
+        // @ts-ignore
+        workbox.core.skipWaiting();
 
         /* injection point for manifest files.  */
         // @ts-ignore

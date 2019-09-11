@@ -4,15 +4,14 @@ const workboxBuild = require('workbox-build');
 const buildSW = () => {
     // This will return a Promise
     return workboxBuild.injectManifest({
-        swSrc: 'src/sw-template.js', // this is your sw template file
+        swSrc: 'src/sw-template.ts', // this is your sw template file
         swDest: 'build/sw.js', // this will be created in the build step
         globDirectory: 'build',
         globPatterns: [
             '**\/*.{js,css,html,png}',
         ],
-        clientsClaim: true,
-        skipWaiting: true,
-    }).then(({count, size, warnings} : any) => {
+        // @ts-ignore
+    }).then(({count, size, warnings}) => {
         // Optionally, log any warnings and details.
         warnings.forEach(console.warn);
         console.log(`${count} files will be precached, totaling ${size} bytes.`);
